@@ -6,35 +6,33 @@ import { gql } from "graphql-tag";
 
 // 1. Define your GraphQL Schema (Type Definitions)
 const typeDefs = gql`
-  type Book {
+  type User {
     id: ID!
-    title: String
-    author: String
-    year: Int
+    name: String
+    phonenumber: String
+    email: String
   }
 
   type Query {
-    books: [Book]
-    book(id: ID!): Book
+    users: [User]
+    user(id: ID!): User
   }
 
   type Mutation {
-    addBook(title: String!, author: String!, year: Int!): Book
-    updateBook(id: ID!, title: String, author: String, year: Int): Book
-    deleteBook(id: ID!): Boolean
+    addUser(name: String!, phonenumber: String!, email: String!): User
+    updateUser(id: ID!, name: String, phonenumber: String, email: String): User
+    deleteUser(id: ID!): Boolean
   }
 `;
 
 // 2. Your "Data Table" (in-memory array)
-let books = [
+let users = [
   {
     id: "1",
-    title: "The Lord of the Rings",
-    author: "J.R.R. Tolkien",
-    year: 1954,
+    name: "Jonas",
+    phonenumber: "+370 612 34567",
+    email: "jonasjonas@gmail.com",
   },
-  { id: "2", title: "Pride and Prejudice", author: "Jane Austen", year: 1813 },
-  { id: "3", title: "1984", author: "George Orwell", year: 1949 },
 ];
 
 let nextId = 4;
@@ -42,27 +40,27 @@ let nextId = 4;
 // 3. Define Resolvers
 const resolvers = {
   Query: {
-    books: () => books,
-    book: (parent, { id }) => books.find((book) => book.id === id),
+    users: () => users,
+    user: (parent, { id }) => users.find((user) => user.id === id),
   },
   Mutation: {
-    addBook: (parent, { title, author, year }) => {
-      const newBook = { id: String(nextId++), title, author, year };
-      books.push(newBook);
-      return newBook;
+    addUser: (parent, { name, phonenumber, email }) => {
+      const newUser = { id: String(nextId++), name, phonenumber, email };
+      users.push(newUser);
+      return newUser;
     },
-    updateBook: (parent, { id, title, author, year }) => {
-      const bookIndex = books.findIndex((book) => book.id === id);
-      if (bookIndex === -1) return null;
+    updateUser: (parent, { id, name, phonenumber, email }) => {
+      const userIndex = users.findIndex((user) => user.id === id);
+      if (userIndex === -1) return null;
 
-      const updatedBook = { ...books[bookIndex], title, author, year };
-      books[bookIndex] = updatedBook;
-      return updatedBook;
+      const updatedUser = { ...users[userIndex], name, phonenumber, email };
+      users[userIndex] = updatedUser;
+      return updatedUser;
     },
-    deleteBook: (parent, { id }) => {
-      const initialLength = books.length;
-      books = books.filter((book) => book.id !== id);
-      return books.length < initialLength;
+    deleteUser: (parent, { id }) => {
+      const initialLength = users.length;
+      users = users.filter((user) => user.id !== id);
+      return users.length < initialLength;
     },
   },
 };
@@ -77,5 +75,5 @@ const server = new ApolloServer({
 startStandaloneServer(server, {
   listen: { port: 4000 },
 }).then(({ url }) => {
-  console.log(`🚀 Server ready at ${url}`);
+  console.log(`${url}`);
 });
