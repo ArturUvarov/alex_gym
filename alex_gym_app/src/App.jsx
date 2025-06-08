@@ -7,6 +7,7 @@ import Treneriai from "./pages/Treneriai";
 import Apie from "./pages/Apie";
 import Klubai from "./pages/Klubai";
 import Taisykles from "./pages/Taisykles";
+import GrupinesTreniruotes from "./pages/GrupinesTreniruotes";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         page
         <Route path="/services/rules" element={<Taisykles />} /> // Route for
         Rules page
+        <Route path="/services/group" element={<GrupinesTreniruotes />} /> // Route for Group Training page
       </Routes>
       <Footer />
     </Router>
