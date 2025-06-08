@@ -38,14 +38,6 @@ function Nav() {
                 <ul className="py-2">
                   <li>
                     <a
-                      href="/services/personal"
-                      className="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 transition-colors duration-200"
-                    >
-                      ASMENINIAI TRENERIAI
-                    </a>
-                  </li>
-                  <li>
-                    <a
                       href="/services/group"
                       className="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 transition-colors duration-200"
                     >
@@ -66,11 +58,6 @@ function Nav() {
             <li>
               <a href="/schedule" className="text-gray-200 hover:text-blue-400">
                 TVARKARAŠTIS
-              </a>
-            </li>
-            <li>
-              <a href="/news" className="text-gray-200 hover:text-blue-400">
-                NAUJIENOS
               </a>
             </li>
             <li className="relative group">

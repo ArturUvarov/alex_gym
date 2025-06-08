@@ -1,8 +1,7 @@
-// server/index.js (Updated for ES Module syntax)
-
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import { gql } from "graphql-tag";
+import { act } from "react";
 
 // 1. Define your GraphQL Schema (Type Definitions)
 const typeDefs = gql`
@@ -13,15 +12,32 @@ const typeDefs = gql`
     email: String
   }
 
+  type Schedule {
+    id: ID!
+    day: String
+    time: String
+    activity: String
+  }
+
   type Query {
     users: [User]
     user(id: ID!): User
+    schedules: [Schedule]
+    schedule(id: ID!): Schedule
   }
 
   type Mutation {
     addUser(name: String!, phonenumber: String!, email: String!): User
     updateUser(id: ID!, name: String, phonenumber: String, email: String): User
     deleteUser(id: ID!): Boolean
+    addSchedule(day: String!, time: String!, activity: String!): Schedule
+    updateSchedule(
+      id: ID!
+      day: String
+      time: String
+      activity: String
+    ): Schedule
+    deleteSchedule(id: ID!): Boolean
   }
 `;
 
@@ -35,6 +51,21 @@ let users = [
   },
 ];
 
+let schedules = [
+  {
+    id: "1",
+    day: "Monday",
+    time: "08:00",
+    activity: "Yoga",
+  },
+  {
+    id: "2",
+    day: "Tuesday",
+    time: "10:00",
+    activity: "Pilates",
+  },
+];
+
 let nextId = 4;
 
 // 3. Define Resolvers
@@ -42,6 +73,9 @@ const resolvers = {
   Query: {
     users: () => users,
     user: (parent, { id }) => users.find((user) => user.id === id),
+    schedules: () => schedules,
+    schedule: (parent, { id }) =>
+      schedules.find((schedule) => schedule.id === id),
   },
   Mutation: {
     addUser: (parent, { name, phonenumber, email }) => {
@@ -61,6 +95,31 @@ const resolvers = {
       const initialLength = users.length;
       users = users.filter((user) => user.id !== id);
       return users.length < initialLength;
+    },
+    addSchedule: (parent, { day, time, activity }) => {
+      const newSchedule = { id: String(nextId++), day, time, activity };
+      schedules.push(newSchedule);
+      return newSchedule;
+    },
+    updateSchedule: (parent, { id, day, time, activity }) => {
+      const scheduleIndex = schedules.findIndex(
+        (schedule) => schedule.id === id
+      );
+      if (scheduleIndex === -1) return null;
+
+      const updatedSchedule = {
+        ...schedules[scheduleIndex],
+        day,
+        time,
+        activity,
+      };
+      schedules[scheduleIndex] = updatedSchedule;
+      return updatedSchedule;
+    },
+    deleteSchedule: (parent, { id }) => {
+      const initialLength = schedules.length;
+      schedules = schedules.filter((schedule) => schedule.id !== id);
+      return schedules.length < initialLength;
     },
   },
 };
