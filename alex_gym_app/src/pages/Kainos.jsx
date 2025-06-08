@@ -1,11 +1,8 @@
-import Nav from "../components/Nav";
 import Gym from "../assets/gym.jpg";
 
 function Kainos() {
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
-      <Nav />
-
       {/* Hero Section */}
       <div className="relative h-[500px] bg-gradient-to-r from-blue-900 to-blue-600">
         {/* Background Image */}
@@ -21,7 +18,7 @@ function Kainos() {
         <div className="absolute -bottom-1 left-0 right-0 overflow-hidden">
           <svg
             viewBox="0 0 2400 200"
-            className="w-full h-[150px] fill-gray-100"
+            className="w-full h-[129px] fill-gray-100"
           >
             <path
               d="M0,100 
