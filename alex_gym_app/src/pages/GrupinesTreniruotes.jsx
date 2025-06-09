@@ -67,7 +67,7 @@ function GrupinesTreniruotes() {
           <div className="flex items-center gap-2 text-gray-200">
             <span>Titulinis</span>
             <span>/</span>
-            <span className="text-white">Paslaugos</span>
+            <span>Paslaugos</span>
             <span>/</span>
             <span className="text-white font-bold">Grupinės treniruotės</span>
           </div>

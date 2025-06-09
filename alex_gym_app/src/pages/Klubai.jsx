@@ -35,6 +35,7 @@ function Klubai() {
                 <stop offset="100%" style={{ stopColor: "#eff6ff" }} />
               </linearGradient>
             </defs>
+
             <path
               fill="url(#waveGradient)"
               d="
