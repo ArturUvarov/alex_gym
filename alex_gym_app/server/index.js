@@ -1,9 +1,8 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import { gql } from "graphql-tag";
-import { act } from "react";
 
-// 1. Define your GraphQL Schema (Type Definitions)
+// GraphQL Schema
 const typeDefs = gql`
   type User {
     id: ID!
@@ -41,15 +40,7 @@ const typeDefs = gql`
   }
 `;
 
-// 2. Your "Data Table" (in-memory array)
-let users = [
-  {
-    id: "1",
-    name: "Jonas",
-    phonenumber: "+370 612 34567",
-    email: "jonasjonas@gmail.com",
-  },
-];
+// Data Table
 
 let schedules = [
   {
@@ -68,7 +59,7 @@ let schedules = [
 
 let nextId = 4;
 
-// 3. Define Resolvers
+// Resolvers
 const resolvers = {
   Query: {
     users: () => users,
@@ -86,8 +77,10 @@ const resolvers = {
     updateUser: (parent, { id, name, phonenumber, email }) => {
       const userIndex = users.findIndex((user) => user.id === id);
       if (userIndex === -1) return null;
-
-      const updatedUser = { ...users[userIndex], name, phonenumber, email };
+      const updatedUser = { ...users[userIndex] };
+      if (name !== undefined) updatedUser.name = name;
+      if (phonenumber !== undefined) updatedUser.phonenumber = phonenumber;
+      if (email !== undefined) updatedUser.email = email;
       users[userIndex] = updatedUser;
       return updatedUser;
     },
@@ -106,13 +99,10 @@ const resolvers = {
         (schedule) => schedule.id === id
       );
       if (scheduleIndex === -1) return null;
-
-      const updatedSchedule = {
-        ...schedules[scheduleIndex],
-        day,
-        time,
-        activity,
-      };
+      const updatedSchedule = { ...schedules[scheduleIndex] };
+      if (day !== undefined) updatedSchedule.day = day;
+      if (time !== undefined) updatedSchedule.time = time;
+      if (activity !== undefined) updatedSchedule.activity = activity;
       schedules[scheduleIndex] = updatedSchedule;
       return updatedSchedule;
     },
@@ -124,13 +114,13 @@ const resolvers = {
   },
 };
 
-// 4. Create an Apollo Server instance
+// Apollo Server
 const server = new ApolloServer({
   typeDefs,
   resolvers,
 });
 
-// 5. Start the server using startStandaloneServer
+// Server
 startStandaloneServer(server, {
   listen: { port: 4000 },
 }).then(({ url }) => {

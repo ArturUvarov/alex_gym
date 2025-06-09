@@ -7,16 +7,20 @@ import exercise4 from "../assets/exercise4.jpg";
 
 function card(img, title) {
   return (
-    <div className="relative rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden">
-      <button><img src={img} className="w-full h-48 object-cover" /></button>
+    <div className="relative overflow-hidden bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl hover:scale-105 transition-all duration-300 border border-gray-100">
+      <button>
+        <img src={img} className="w-full h-48 object-cover" />
+      </button>
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
       <div className="absolute bottom-4 left-4 text-white">
         <h1 className="text-sm font-bold">{title}</h1>
-        <p className="text-sm">Intensyvumas: {Math.round(1 + Math.random() * 2)} iš 3</p>
+        <p className="text-sm">
+          Intensyvumas: {Math.round(1 + Math.random() * 2)} iš 3
+        </p>
       </div>
     </div>
   );
-};
+}
 
 function GrupinesTreniruotes() {
   return (
@@ -37,14 +41,20 @@ function GrupinesTreniruotes() {
           <svg
             viewBox="0 0 2400 200"
             className="w-full h-[129px] fill-gray-100"
+            shapeRendering="geometricPrecision"
+            preserveAspectRatio="none"
           >
             <path
-              d="M0,100 
-                 C400,150 800,50 1200,100 
-                 C1600,150 2000,50 2400,100 
-                 L2400,200 
-                 L0,200 
-                 Z"
+              d="
+                M0,160
+                C200,120 400,120 600,160
+                C800,200 1000,200 1200,160
+                C1400,120 1600,120 1800,160
+                C2000,200 2200,200 2400,160
+                L2400,200
+                L0,200
+                Z
+              "
             />
           </svg>
         </div>
@@ -59,24 +69,24 @@ function GrupinesTreniruotes() {
             <span>/</span>
             <span className="text-white">Paslaugos</span>
             <span>/</span>
-            <span className="text-white">Grupinės treniruotės</span>
+            <span className="text-white font-bold">Grupinės treniruotės</span>
           </div>
         </div>
       </div>
 
       {/* Cards Section */}
-      <main className="container mx-auto px-4 mt-1 relative z-20 pb-16">
+      <main className="container mx-auto px-4 mt-26 relative z-20 pb-16">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* Cards */}
-            {card(exercise1, 'SPORTAS')}
-            {card(exercise2, 'SPORTAS')}
-            {card(exercise3, 'SPORTAS')}
-            {card(exercise4, 'SPORTAS')}
-            {card(exercise3, 'SPORTAS')}
-            {card(exercise1, 'SPORTAS')}
-            {card(exercise4, 'SPORTAS')}
-            {card(exercise2, 'SPORTAS')}
+            {card(exercise1, "SPORTAS")}
+            {card(exercise2, "SPORTAS")}
+            {card(exercise3, "SPORTAS")}
+            {card(exercise4, "SPORTAS")}
+            {card(exercise3, "SPORTAS")}
+            {card(exercise1, "SPORTAS")}
+            {card(exercise4, "SPORTAS")}
+            {card(exercise2, "SPORTAS")}
           </div>
         </div>
       </main>

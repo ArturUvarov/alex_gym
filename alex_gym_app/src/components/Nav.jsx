@@ -120,10 +120,12 @@ function Nav() {
             </li>
           </ul>
           <div className="flex items-center space-x-6">
-            <button className="bg-blue-500 text-white px-6 py-2.5 rounded-lg hover:bg-blue-600 flex items-center gap-2 transition-all duration-300 shadow-lg hover:shadow-blue-500/50">
-              <IoPersonOutline className="text-lg" />
-              <span className="font-medium">PRISIJUNGTI</span>
-            </button>
+            <a href="/sign-up">
+              <button className="bg-blue-500 text-white px-6 py-2.5 rounded-lg hover:bg-blue-600 flex items-center gap-2 transition-all duration-300 shadow-lg hover:shadow-blue-500/50">
+                <IoPersonOutline className="text-lg" />
+                <span className="font-medium">PRISIJUNGTI</span>
+              </button>
+            </a>
           </div>
         </div>
       </div>

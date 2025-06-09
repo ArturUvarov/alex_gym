@@ -17,14 +17,36 @@ function Klubai() {
 
         {/* Wave SVG */}
         <div className="absolute -bottom-1 left-0 right-0 overflow-hidden">
-          <svg viewBox="0 0 2400 200" className="w-full h-[150px] fill-white">
+          <svg
+            viewBox="0 0 2400 200"
+            className="w-full h-[140px]"
+            shapeRendering="geometricPrecision"
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <linearGradient
+                id="waveGradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="0%"
+              >
+                <stop offset="0%" style={{ stopColor: "#f8fafc" }} />
+                <stop offset="100%" style={{ stopColor: "#eff6ff" }} />
+              </linearGradient>
+            </defs>
             <path
-              d="M0,100 
-                 C400,150 800,50 1200,100 
-                 C1600,150 2000,50 2400,100 
-                 L2400,200 
-                 L0,200 
-                 Z"
+              fill="url(#waveGradient)"
+              d="
+               M0,160
+                C200,120 400,120 600,160
+                C800,200 1000,200 1200,160
+                C1400,120 1600,120 1800,160
+                C2000,200 2200,200 2400,160
+                L2400,200
+                L0,200
+                Z
+              "
             />
           </svg>
         </div>
@@ -37,7 +59,7 @@ function Klubai() {
           <div className="flex items-center gap-2 text-gray-200">
             <span>Titulinis</span>
             <span>/</span>
-            <span className="text-white">Klubai</span>
+            <span className="text-white font-bold">Klubai</span>
           </div>
         </div>
       </div>
