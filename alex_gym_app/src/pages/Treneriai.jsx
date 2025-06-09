@@ -43,6 +43,8 @@ function Treneriai() {
           <div className="flex items-center gap-2 text-gray-200">
             <span>Titulinis</span>
             <span>/</span>
+            <span>Paslaugos</span>
+            <span>/</span>
             <span className="text-white">Treneriai</span>
           </div>
         </div>
