@@ -17,7 +17,7 @@ function Klubai() {
 
         {/* Wave SVG */}
         <div className="absolute -bottom-1 left-0 right-0 overflow-hidden">
-          <svg viewBox="0 0 2400 200" className="w-full h-[129px] fill-white">
+          <svg viewBox="0 0 2400 200" className="h-[150px] fill-white">
             <path
               d="M0,100 
                  C400,150 800,50 1200,100 

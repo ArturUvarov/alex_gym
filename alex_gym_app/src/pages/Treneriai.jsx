@@ -22,7 +22,7 @@ function Treneriai() {
         <div className="absolute -bottom-1 left-0 right-0 overflow-hidden">
           <svg
             viewBox="0 0 2400 200"
-            className="w-full h-[129px] fill-gray-100"
+            className="h-[150px] fill-gray-100"
           >
             <path
               d="M0,100 
