@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Mail, Phone, Star, Award, Users, Calendar } from "lucide-react";
 import Gym from "../assets/gym_2.jpg";
-import Trainer from "../assets/DominykasWeb.png";
-import Trainer2 from "../assets/Gerardas.jpg";
-import Trainer3 from "../assets/Tomas.jpg";
+import Trainer1 from "../assets/trainer_1.png";
+import Trainer2 from "../assets/trainer_2.jpg";
+import Trainer3 from "../assets/trainer_3.jpg";
 
 function Treneriai() {
   const [selectedTrainer, setSelectedTrainer] = useState(null);
@@ -12,7 +12,7 @@ function Treneriai() {
     {
       id: 1,
       name: "Dominykas Žilionis",
-      image: Trainer,
+      image: Trainer1,
       specialties: [
         "Asmeninis Treneris",
         "Atletinis rengimas",

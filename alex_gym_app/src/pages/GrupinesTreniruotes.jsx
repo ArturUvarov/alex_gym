@@ -1,4 +1,4 @@
-import Gym from "../assets/gym.jpg";
+import gymPhoto from "../assets/gym_1.jpg";
 
 import exercise1 from "../assets/exercise1.png";
 import exercise2 from "../assets/exercise2.png";
@@ -30,7 +30,7 @@ function GrupinesTreniruotes() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
-            src={Gym}
+            src={gymPhoto}
             alt="Background"
             className="w-full h-full object-cover mix-blend-overlay opacity-40"
           />

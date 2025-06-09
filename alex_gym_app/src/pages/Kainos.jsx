@@ -1,4 +1,4 @@
-import Gym from "../assets/gym.jpg";
+import gymPhoto from "../assets/gym_1.jpg";
 import React, { useState } from "react";
 import { Gem } from "lucide-react";
 
@@ -53,7 +53,7 @@ function Kainos() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
-            src={Gym}
+            src={gymPhoto}
             alt="Gym background"
             className="w-full h-full object-cover mix-blend-overlay opacity-40"
           />
