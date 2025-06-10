@@ -9,6 +9,7 @@ import Klubai from "./pages/Klubai";
 import Taisykles from "./pages/Taisykles";
 import GrupinesTreniruotes from "./pages/GrupinesTreniruotes";
 import SignUp from "./pages/SignIUp";
+import Schedule from "./pages/Schedule";
 import Main from "./components/Main";
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="/services/group" element={<GrupinesTreniruotes />} /> //
         Route for Group Training page
         <Route path="/sign-up" element={<SignUp />} /> // Route for Sign Up page
+        <Route path="/schedule" element={<Schedule />} /> // Route for Schedule page
       </Routes>
       <Footer />
     </Router>
