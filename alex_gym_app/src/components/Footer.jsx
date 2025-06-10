@@ -31,7 +31,7 @@ function Footer() {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="/about"
+                  href="/services/alexgym"
                   className="hover:text-blue-500 transition-colors duration-200"
                 >
                   Apie Mus
