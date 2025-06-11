@@ -10,6 +10,7 @@ import Taisykles from "./pages/Taisykles";
 import GrupinesTreniruotes from "./pages/GrupinesTreniruotes";
 import SignUp from "./pages/SignIUp";
 import Main from "./components/Main";
+import Tvarkarastis from "./pages/Tvarkarastis";
 
 function App() {
   return (
@@ -29,6 +30,8 @@ function App() {
         <Route path="/services/group" element={<GrupinesTreniruotes />} /> //
         Route for Group Training page
         <Route path="/sign-up" element={<SignUp />} /> // Route for Sign Up page
+        <Route path="/schedule" element={<Tvarkarastis />} /> // Route for
+        Schedule page
       </Routes>
       <Footer />
     </Router>

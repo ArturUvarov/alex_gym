@@ -11,13 +11,6 @@ const typeDefs = gql`
     email: String
   }
 
-  type Schedule {
-    id: ID!
-    day: String
-    time: String
-    activity: String
-  }
-
   type Query {
     users: [User]
     user(id: ID!): User
@@ -29,31 +22,17 @@ const typeDefs = gql`
     addUser(name: String!, phonenumber: String!, email: String!): User
     updateUser(id: ID!, name: String, phonenumber: String, email: String): User
     deleteUser(id: ID!): Boolean
-    addSchedule(day: String!, time: String!, activity: String!): Schedule
-    updateSchedule(
-      id: ID!
-      day: String
-      time: String
-      activity: String
-    ): Schedule
-    deleteSchedule(id: ID!): Boolean
   }
 `;
 
 // Data Table
 
-let schedules = [
+let users = [
   {
     id: "1",
-    day: "Monday",
-    time: "08:00",
-    activity: "Yoga",
-  },
-  {
-    id: "2",
-    day: "Tuesday",
-    time: "10:00",
-    activity: "Pilates",
+    name: "John Doe",
+    phonenumber: "1234567890",
+    email: "jonas.jonaitis@gmail.com",
   },
 ];
 
@@ -64,9 +43,6 @@ const resolvers = {
   Query: {
     users: () => users,
     user: (parent, { id }) => users.find((user) => user.id === id),
-    schedules: () => schedules,
-    schedule: (parent, { id }) =>
-      schedules.find((schedule) => schedule.id === id),
   },
   Mutation: {
     addUser: (parent, { name, phonenumber, email }) => {
@@ -88,28 +64,6 @@ const resolvers = {
       const initialLength = users.length;
       users = users.filter((user) => user.id !== id);
       return users.length < initialLength;
-    },
-    addSchedule: (parent, { day, time, activity }) => {
-      const newSchedule = { id: String(nextId++), day, time, activity };
-      schedules.push(newSchedule);
-      return newSchedule;
-    },
-    updateSchedule: (parent, { id, day, time, activity }) => {
-      const scheduleIndex = schedules.findIndex(
-        (schedule) => schedule.id === id
-      );
-      if (scheduleIndex === -1) return null;
-      const updatedSchedule = { ...schedules[scheduleIndex] };
-      if (day !== undefined) updatedSchedule.day = day;
-      if (time !== undefined) updatedSchedule.time = time;
-      if (activity !== undefined) updatedSchedule.activity = activity;
-      schedules[scheduleIndex] = updatedSchedule;
-      return updatedSchedule;
-    },
-    deleteSchedule: (parent, { id }) => {
-      const initialLength = schedules.length;
-      schedules = schedules.filter((schedule) => schedule.id !== id);
-      return schedules.length < initialLength;
     },
   },
 };
