@@ -390,7 +390,7 @@ function Main() {
         </div>
       </div>
 
-      {/* Call to Action Section */}
+      {/* Action Section */}
       <div className="bg-gradient-to-r from-blue-600 to-orange-500 text-white py-12 text-center my-16 rounded-xl mx-4 shadow-lg">
         <h2 className="text-3xl font-bold mb-4">
           Prisijunk prie AlexGym šiandien!
